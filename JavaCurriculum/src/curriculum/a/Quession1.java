@@ -4,16 +4,29 @@ public class Quession1 {
 	
 	public static void main(String[] args) {
 		
-		// Q1,Q2
-		byte byteNum = 10;
-		short shortNum = 100;
-		int intNum = 1000;
-		long longNum = 10000;
-		float floatNum = 9.5f;
-		double doubleNum = 10.5;
-		char letter = 'a';
-		String letters = "ハロー";
-		boolean isBoolean = true;
+		// Q1
+		// 変数宣言と初期化
+		byte byteNum = 0;
+		short shortNum = 0;
+		int intNum = 0;
+		long longNum = 0;
+		float floatNum = 0.0f;
+		double doubleNum = 0.0;
+		char letter = '\u0000';
+		String letters = null;
+		boolean isBoolean = false;
+		
+		// Q2
+		// 値を入れる
+		byteNum = 10;
+		shortNum = 100;
+		intNum = 1000;
+		longNum = 10000;
+		floatNum = 9.5f;
+		doubleNum = 10.5;
+		letter = 'a';
+		letters = "ハロー";
+		isBoolean = true;
 
 		// Q3
 		System.out.println(byteNum);
