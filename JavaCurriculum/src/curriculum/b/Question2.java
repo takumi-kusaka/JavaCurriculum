@@ -12,7 +12,7 @@ public class Question2 {
 			// Q2
 			int age = 25;
 			// ageが20以上、30以下なら
-			if (20 <= age && 30 >= age ) {
+			if (20 <= age && 30 >= age) {
 				System.out.println("適正年齢です");
 				System.out.println();
 			} else {
@@ -72,7 +72,7 @@ public class Question2 {
 			}
 
 			// Q6 
-			// 数字を乳させる
+			// 数字を入力させる
 			System.out.print("数字を入力してください:");
 			int value = new java.util.Scanner(System.in).nextInt();
 			if (value % 2 == 0) {
@@ -151,32 +151,38 @@ public class Question2 {
 				System.out.print("1〜12のいずれかを入力:");
 				int month = new java.util.Scanner(System.in).nextInt();
 				switch (month) {
+				// 12,1,2の場合
 				case 12:
 				case 1:
 				case 2:
 					System.out.println("冬");
 					System.out.println();
 					break;
+				// 3,4,5の場合
 				case 3:
 				case 4:
 				case 5:
 					System.out.println("春");
 					System.out.println();
 					break;
+				// 6,7,8の場合
 				case 6:
 				case 7:
 				case 8:
 					System.out.println("夏");
 					System.out.println();
 					break;
+				// 9,10,11の場合
 				case 9:
 				case 10:
 				case 11:
 					System.out.println("秋");
 					System.out.println();
+					// それ以外
 				default:
 					System.out.println("無効な月です");
 					System.out.println();
+					break;
 				}
 
 			}
