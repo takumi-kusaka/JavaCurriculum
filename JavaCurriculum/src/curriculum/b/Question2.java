@@ -117,30 +117,37 @@ public class Question2 {
 				int day = new java.util.Scanner(System.in).nextInt();
 				// switch文で分岐
 				switch (day) {
+				// 1の場合
 				case 1:
 					System.out.println("月曜日");
 					System.out.println();
 					break;
+				// 2の場合
 				case 2:
 					System.out.println("火曜日");
 					System.out.println();
 					break;
+				// 3の場合
 				case 3:
 					System.out.println("水曜日");
 					System.out.println();
 					break;
+				// 4の場合
 				case 4:
 					System.out.println("木曜日");
 					System.out.println();
 					break;
+				// 5の場合
 				case 5:
 					System.out.println("金曜日");
 					System.out.println();
 					break;
+				// 6の場合
 				case 6:
 					System.out.println("土曜日");
 					System.out.println();
 					break;
+				// 7の場合
 				case 7:
 					System.out.println("日曜日");
 					System.out.println();
