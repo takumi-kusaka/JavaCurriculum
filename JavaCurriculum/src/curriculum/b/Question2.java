@@ -1,22 +1,25 @@
 package curriculum.b;
 
+import java.util.Scanner;
+
 public class Question2 {
 	public static void main(String[] args) {
 		// Q1
 		int score = 75;
 		// scoreが60以上なら
 		if (60 <= score) {
-			System.out.println("合格です！");
+			System.out.println("Q1:合格です！");
 			System.out.println();
-
+			// }閉じ忘れ
+		}
 			// Q2
 			int age = 25;
 			// ageが20以上、30以下なら
 			if (20 <= age && 30 >= age) {
-				System.out.println("適正年齢です");
+				System.out.println("Q2:適正年齢です");
 				System.out.println();
 			} else {
-				System.out.println("対象外です");
+				System.out.println("Q2:対象外です");
 				System.out.println();
 			}
 
@@ -24,15 +27,15 @@ public class Question2 {
 			age = 18;
 			// ageが20以上なら
 			if (age >= 20) {
-				System.out.println("成人です");
+				System.out.println("Q3:成人です");
 				System.out.println();
 				// ageが13以上、19以下なら
 			} else if (age >= 13 && age <= 19) {
-				System.out.println("ティーンエイジャーです");
+				System.out.println("Q3:ティーンエイジャーです");
 				System.out.println();
 				// ageが12以下なら
 			} else if (age <= 12) {
-				System.out.println("子供です");
+				System.out.println("Q3:子供です");
 				System.out.println();
 			}
 
@@ -54,9 +57,11 @@ public class Question2 {
 			}
 
 			// Q5
-			// 数値を入力させる
-			System.out.print("数字の入力をしてください:");
-			int num = new java.util.Scanner(System.in).nextInt();
+			System.out.print("Q5:数字の入力をしてください:");
+			// 入力の窓口を用意
+			Scanner sc = new Scanner(System.in);
+			// 入力されたscをint型にしnumに代入
+			int num = Integer.parseInt(sc.nextLine());
 			// numが0より大きい場合
 			if (0 < num) {
 				System.out.println("正の数です");
@@ -73,18 +78,22 @@ public class Question2 {
 
 			// Q6 
 			// 数字を入力させる
-			System.out.print("数字を入力してください:");
-			int value = new java.util.Scanner(System.in).nextInt();
+			System.out.print("Q6:数字を入力してください:");
+			// 入力されたscをint型にしvalueに代入
+			int value = Integer.parseInt(sc.nextLine());
 			if (value % 2 == 0) {
 				System.out.println("偶数です");
 				System.out.println();
 			} else if (value % 2 != 0) {
 				System.out.println("奇数です");
 				System.out.println();
+				// }閉じ忘れ
+			}
 
 				// Q7
-				System.out.print("数字を入力してください:");
-				score = new java.util.Scanner(System.in).nextInt();
+				System.out.print("Q7:数字を入力してください:");
+				// 入力されたscをint型にしscoreに代入
+				score = Integer.parseInt(sc.nextLine());
 				// 数字が90以上なら
 				if (score >= 90) {
 					System.out.println("優");
@@ -101,20 +110,25 @@ public class Question2 {
 				} else if (score < 50) {
 					System.out.println("不可");
 					System.out.println();
-
+					// }閉じ忘れ
+					}
+				
 					// Q8	
-					System.out.print("文字を入力してください:");
-					String ward = new java.util.Scanner(System.in).nextLine();
+					System.out.print("Q8:文字を入力してください:");
+					// 入力されたscをString型にし、wardに代入
+					String ward = String.valueOf(sc);
 					// wardがnullまたは空文字の時
-					if (ward == null || ward == "") {
+					// 修正
+					if (ward == null || ward.equals("")) {
 						System.out.println("入力が無効です");
 						System.out.println();
-					}
+					
 				}
 
 				// Q9 数値の入力
-				System.out.print("1〜7のいずれかを入力:");
-				int day = new java.util.Scanner(System.in).nextInt();
+				System.out.print("Q9:1〜7のいずれかを入力:");
+				// 入力されたscをint型にしdayに代入
+				int day = Integer.parseInt(sc.nextLine());
 				// switch文で分岐
 				switch (day) {
 				// 1の場合
@@ -155,7 +169,7 @@ public class Question2 {
 				}
 
 				// Q10
-				System.out.print("1〜12のいずれかを入力:");
+				System.out.print("Q10:1〜12のいずれかを入力:");
 				int month = new java.util.Scanner(System.in).nextInt();
 				switch (month) {
 				// 12,1,2の場合
@@ -185,6 +199,8 @@ public class Question2 {
 				case 11:
 					System.out.println("秋");
 					System.out.println();
+					// break忘れ
+					break;
 					// それ以外
 				default:
 					System.out.println("無効な月です");
@@ -194,5 +210,4 @@ public class Question2 {
 
 			}
 		}
-	}
-}
+	
