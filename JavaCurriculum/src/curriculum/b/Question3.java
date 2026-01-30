@@ -9,7 +9,8 @@ public class Question3 {
 		// Q1
 		System.out.println("Q1");
 		// iが10以上になるまで繰り返す
-		for (int i = 0; i <= 10; i++) {
+		// iの初期値0を1に変更
+		for (int i = 1; i <= 10; i++) {
 			System.out.println(i);
 		}
 		System.out.println();
@@ -46,7 +47,8 @@ public class Question3 {
 		// Q5
 		System.out.println("Q5");
 		// iが5以上になるまで繰り返す
-		for (int i = 0; i <= 5; i++) {
+		// iの初期値0を1に変更
+		for (int i = 1; i <= 5; i++) {
 			// jがi以上になるまで繰り返す
 			for (int j = 1; j <= i; j++) {
 				System.out.print("*");
@@ -104,47 +106,70 @@ public class Question3 {
 		// Q10
 		Scanner sc = new Scanner(System.in);
 		do {
-			System.out.print("Q10,数値の入力:");
-			i = Integer.parseInt(sc.nextLine());
+			// try-catch追加、
+			try {
+				System.out.print("Q10,数値の入力:");
+				i = Integer.parseInt(sc.nextLine());
+			} catch (NumberFormatException e) {
+				// 数値以外の入力の時
+				System.out.println("数値が入力されていません");
+			}
 			// iが0じゃないなら繰り返す
 		} while (i != 0);
 		System.out.println("終了しました");
 		System.out.println();
 
-		// Q11 すみませんわかりませんでした。
-		//		for (int i = 1; i <= 9; i++) {
-		//			System.out.println(i);
-		//		}
+		// Q11
+		System.out.println("Q11");
+		for (int a = 1; a <= 9; a++) {
+			for (int j = 1; j <= 9; j++) {
+				System.out.printf("%02d * %02d = %02d || ", a, j, a * j);
+			}
+			System.out.println();
+		}
+		System.out.println();
 
 		Random rand = new Random();
 		// Q12
-		System.out.print("Q12,商品を入力:");
-		// 商品を入力
-		//商品一覧
+		System.out.println("Q12、商品を入力↓");
+		boolean flag;
 		String[] catalog = { "テレビ", "ディスプレイ", "パソコン", "冷蔵庫", "扇風機", "洗濯機", "加湿器", };
-		String ward = sc.nextLine();
-		// 残りの台数
-		i = rand.nextInt(12);
-		for (String s : catalog) {
-			// switch文で分岐
-			switch (s) {
-			case "テレビ":
-			case "ディスプレイ":
-				
-				System.out.println(s + "の残りの台数は" + i + "台です");
-				break;
-			case "パソコン":
-			case "冷蔵庫":
-			case "扇風機":
-			case "洗濯機":
-			case "加湿器":
-				System.out.println(s + "の残りの台数は" + i + "台です");
-				break;
-			default:
-				System.out.println(s + "は指定の商品ではありません");
-				break;
-			}
-		}
-	}
 
+		do {
+			// テレビとディスプレイの合計を決める
+			int stock = rand.nextInt(12);
+			// while判定用
+			flag = true;
+			String input = sc.nextLine();
+			String[] inputs = input.split("、");
+			for (String s : inputs) {
+				s = s.trim();
+
+				switch (s) {
+				case "パソコン":
+				case "冷蔵庫":
+				case "扇風機":
+				case "洗濯機":
+				case "加湿器":
+					stock = rand.nextInt(12);
+					System.out.println(s + "の残り台数は" + stock + "台です");
+					break;
+				case "テレビ":
+				case "ディスプレイ":
+					int TVstock = s.equals("テレビ") ? stock : 11 - stock;
+					System.out.println(s + "の残りの台数は" + TVstock);
+					break;
+				default:
+					System.out.println("「 " + s + " 」" + "は指定の商品ではありません");
+					break;
+				case "end":
+					System.out.println("終了します");
+					flag = false;
+				}
+
+			}
+
+			System.out.println();
+		} while (flag);
+	}
 }
