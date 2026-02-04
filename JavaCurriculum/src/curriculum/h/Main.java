@@ -3,15 +3,15 @@ package curriculum.h;
 public class Main {
 
 	public static void main(String[] args) {
-		FullTimeEmployee fullTimeEmployee = new FullTimeEmployee();
-		PartTimeEmployee partTimeEmployee = new PartTimeEmployee();
+		FullTimeEmployee fullTimeEmployee = new FullTimeEmployee("E001", "佐藤太郎");
+		PartTimeEmployee partTimeEmployee = new PartTimeEmployee("E002", "田中花子");
 		// 労働時間
 		int  hoursWorked = 9;
 
 		System.out.println(
-				"正社員の給与:" +
+		fullTimeEmployee.name + ":" +
 		fullTimeEmployee.calculateDailyWage(hoursWorked) + "円" + "\n"
-				+ "パート社員の給料:" + partTimeEmployee.calculateDailyWage(hoursWorked) + "円"
+				+ partTimeEmployee.name + ":" + partTimeEmployee.calculateDailyWage(hoursWorked) + "円"
 		);
 	}
 

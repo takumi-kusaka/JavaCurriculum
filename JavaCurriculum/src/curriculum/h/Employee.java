@@ -7,7 +7,7 @@ public abstract class Employee {
 	String name;
 
 	// コンストラクタを定義
-	Employee(){
+	Employee(String employeeId, String name){
 		this.employeeId = employeeId;
 		this.name = name;
 	}
