@@ -2,9 +2,9 @@ package curriculum.b;
 
 public class Animal {
 	// 情報の入力
-	String name;
-	double body;
-	int speed;
+	private String name;
+	private double body;
+	private int speed;
 
 
 	// getter,setterの生成
