@@ -1,6 +1,6 @@
 package curriculum.e;
 
-public abstract class Main {
+public class Main {
 	public static void main (String[] args) {
 
 		//  インスタンスを生成
