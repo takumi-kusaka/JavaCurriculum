@@ -23,9 +23,9 @@ public abstract class Employee implements Billable {
 class FullTimeEmployee extends Employee {
 	@Override
 	public int costForDay(int hoursWorked) {
-		return (int)(8 * 1250 + (hoursWorked - 8) * 1250 * 1.25);
+		return (int)(8 * 1250 + ((hoursWorked - 8) * 1250) * 1.25);
 }
-	// インスタンス時親クラスのコンストラクタが呼ばれる
+	// インスタンス時,親クラスのコンストラクタが呼ばれる
 	FullTimeEmployee (String id, String name){
 		super(id, name);
 	}
@@ -36,7 +36,7 @@ class FullTimeEmployee extends Employee {
 	public int costForDay(int hoursWorked) {
 		return hoursWorked * 1000;
 	}
-	// インスタンス時親クラスのコンストラクタが呼ばれる
+	// インスタンス時,親クラスのコンストラクタが呼ばれる
 	ContractEmployee (String id, String name){
 	super(id, name);
 	}

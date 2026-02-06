@@ -13,6 +13,7 @@ public class Main {
 			System.out.println(b.costForDay(9));
 		}
 
+		
 	}
 
 }
