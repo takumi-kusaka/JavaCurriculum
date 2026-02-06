@@ -5,8 +5,7 @@ public class Contract extends Employee {
 	@Override
 	// パート社員給与計算
 	protected int calculateSalary() {
-		return
-	getHours() * 1000;
+		return getHours() * 1000;
 	}
 
 	
