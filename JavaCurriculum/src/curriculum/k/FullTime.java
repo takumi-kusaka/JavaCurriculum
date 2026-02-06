@@ -13,6 +13,7 @@ public class FullTime extends Employee {
 	// インスタンス時、親のコンストラクタが呼ばれる
 	public FullTime(String name, int hours){
 		super(name, hours);
+		
 	}
 	
 }

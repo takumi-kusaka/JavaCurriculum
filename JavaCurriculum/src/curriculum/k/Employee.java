@@ -11,7 +11,6 @@ public abstract class Employee {
 		this.name = name;
 		this.hours = hours;
 	}
-
 	
 
 	// getter

@@ -8,7 +8,6 @@ public class Main {
 		System.out.println(e1.getName() + "は" + e1.calculateSalary() + "円です");
 		System.out.println(e2.getName() + "は" + e2.calculateSalary() + "円です");
 		
-
 	}
 
 }
