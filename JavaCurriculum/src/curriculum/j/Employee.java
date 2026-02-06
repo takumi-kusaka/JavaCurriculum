@@ -23,7 +23,9 @@ public abstract class Employee implements Billable {
 class FullTimeEmployee extends Employee {
 	@Override
 	public int costForDay(int hoursWorked) {
-		return (int)(8 * 1250 + ((hoursWorked - 8) * 1250) * 1.25);
+		int regularHours = 8 * 1250;
+	    int overtime = Math.max(0, hoursWorked  - 8) * 1250 * 125 / 100;
+	    return regularHours + overtime;
 }
 	// インスタンス時,親クラスのコンストラクタが呼ばれる
 	FullTimeEmployee (String id, String name){
