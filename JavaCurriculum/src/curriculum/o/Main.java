@@ -10,7 +10,7 @@ public class Main {
 //		    System.out.println(person1.height);
 
 
-		 	person1.bmi(1.7, 60);
+		 	person1.bmi();
 		    person1.print();
 		    System.out.println("合計" + Person.count + "人です");
 

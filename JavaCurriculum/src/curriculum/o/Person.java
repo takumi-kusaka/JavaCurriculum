@@ -30,9 +30,9 @@ public class Person {
 	//	}
 
 	// Q7
-	public double bmi(double height, double weight) {
+	public int bmi() {
 		bmi = (int) (weight / (height * height));
-		return this.bmi = bmi;
+		return bmi;
 	}
 
 	// Q8
