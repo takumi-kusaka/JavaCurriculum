@@ -9,7 +9,7 @@ public class Question6 {
 		Scanner sc = new Scanner(System.in);
 		// while判定用
 		boolean flag = false;
-
+		
 		do {
 			// 必ず行う処理
 		System.out.print("グー(0),チョキ(1),パー(2)を入力:");
@@ -40,15 +40,26 @@ public class Question6 {
 		// それ以外
 		default :
 			System.out.println("0〜2で入力してください");
-			break;
+			continue;
 		}
 		// インスタンスを生成し
 		// 手を決める
 		CPU cpu = new CPU();
 		// 手を表示
-		System.out.println(cpu.getB());
+		switch(cpu.getB()) {
+		case 0:
+			System.out.println("CPUの手:グー");
+			break;
+		case 1:
+			System.out.println("CPUの手:チョキ");
+			break;
+		case 2:
+			System.out.println("CPUの手:パー");
+			break;
+		}
+		
 		// 相手の手と差分で出力を分岐
-		switch((a - cpu.b + 3) %3){
+		switch((a - cpu.getB() + 3) %3){
 		case 0:
 			System.out.println("あいこ");
 			break;
@@ -62,10 +73,6 @@ public class Question6 {
 		}
 		// flag = false間ループ
 		}while (!flag);
-
-
-
-
-		}
-
+	
+	}
 }
