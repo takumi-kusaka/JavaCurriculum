@@ -42,16 +42,17 @@ public class Character {
 	}
 
 	// 攻撃メソッドを生成
-	public void damage(int AT) {
+	public String damage(int AT) {
 		this.HP -= AT;
 		if(this.HP <= 0) {
 			this.HP = 0;
 		}
-		System.out.println(this.name + "に" + AT + "のダメージ！" + "\n"
-				+ "残りのHP:" + this.HP);
+		String m = this.name + "に" + AT + "のダメージ！" + "\n"
+				+ "残りのHP:" + this.HP + " ";
 		if (this.HP == 0) {
-			System.out.println(this.name + "は力尽きた");
+			m += this.name + "は力尽きた";
 		}
+		return m;
 	}
 	
 
