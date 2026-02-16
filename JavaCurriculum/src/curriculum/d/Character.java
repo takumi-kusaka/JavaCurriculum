@@ -83,7 +83,7 @@ public class Character {
 	}
 
 	// 追加
-	public void setStatus(int HP, int AT, int SP) {
+	public void setStatus() {
 		this.HP = rand.nextInt(100) + 1;
 		this.AT = rand.nextInt(30) + 1;
 		this.SP = rand.nextInt(10) + 1;

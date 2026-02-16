@@ -26,7 +26,7 @@ public class Question7 {
 			// 入力された名前を引数にインスタンスを生成
 			Character player = new Character();
 			player.setName(name);
-			player.setStatus(0, 0, 0);
+			player.setStatus();
 			// ステータスを表示
 			System.out.println("ようこそ" + player.getName() + "さん。\nあなたのステータスは" + "\n"
 					+ "HP:" + player.getHP() + "\n"
@@ -68,7 +68,6 @@ public class Question7 {
 			}
 			// 記入
 			pw.println(fight);
-			
 			
 			if (fight == 0) {
 				// ターン数を表示
