@@ -24,7 +24,9 @@ public class Question7 {
 			// 記入
 			pw.println(name);
 			// 入力された名前を引数にインスタンスを生成
-			Character player = new Character(name);
+			Character player = new Character();
+			player.setName(name);
+			player.setStatus(0, 0, 0);
 			// ステータスを表示
 			System.out.println("ようこそ" + player.getName() + "さん。\nあなたのステータスは" + "\n"
 					+ "HP:" + player.getHP() + "\n"

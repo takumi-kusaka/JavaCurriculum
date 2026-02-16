@@ -23,13 +23,13 @@ public class Character {
 	}
 
 	// Player用のコンストラクタを定義
-	Character(String name) {
-		this.name = name;
-		this.HP = rand.nextInt(100) + 1;
-		this.AT = rand.nextInt(30) + 1;
-		this.SP = rand.nextInt(10) + 1;
-
-	}
+//	Character(String name) {
+//		this.name = name;
+//		this.HP = rand.nextInt(100) + 1;
+//		this.AT = rand.nextInt(30) + 1;
+//		this.SP = rand.nextInt(10) + 1;
+//
+//	}
 
 	// daemonステータスを読み込むメソッド
 	public void loadDaemon(String filePath) throws Exception {
@@ -71,26 +71,23 @@ public class Character {
 		return HP;
 	}
 
-	public void setHP(int hP) {
-		HP = hP;
-	}
 
 	public int getAT() {
 		return AT;
 	}
 
-	public void setAT(int AT) {
-		AT = AT;
-	}
+	
 
 	public int getSP() {
 		return SP;
 	}
 
-	public void setSP(int SP) {
-		SP = SP;
+	// 追加
+	public void setStatus(int HP, int AT, int SP) {
+		this.HP = rand.nextInt(100) + 1;
+		this.AT = rand.nextInt(30) + 1;
+		this.SP = rand.nextInt(10) + 1;
 	}
-
 
 
 
