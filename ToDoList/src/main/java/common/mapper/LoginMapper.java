@@ -16,3 +16,4 @@ public interface LoginMapper {
     int existsByUsernameAndPassword(@Param("username") String username,
                                     @Param("password") String password);
 }
+

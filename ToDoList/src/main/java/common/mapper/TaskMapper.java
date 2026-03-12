@@ -47,8 +47,7 @@ public interface TaskMapper {
 	
 	@Select("SELECT id, title, content, username, start_date, end_date FROM tasks WHERE id = #{id}")
 	Task findById(int id);
-	
-	
+
 	@Update("""
 			UPDATE tasks
     SET

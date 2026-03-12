@@ -26,4 +26,5 @@ public class RegisterController {
     	registerService.register(login);
     	return "redirect:/login";
     }
+    
 }
