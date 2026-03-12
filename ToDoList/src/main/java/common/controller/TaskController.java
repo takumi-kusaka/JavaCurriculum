@@ -71,5 +71,4 @@ public class TaskController {
     	return "redirect:/list";
     }
     
-    
 }

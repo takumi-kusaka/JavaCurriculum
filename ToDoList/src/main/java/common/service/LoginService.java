@@ -16,6 +16,4 @@ public class LoginService {
     public boolean loginCheck(String username, String password) {
         return loginMapper.existsByUsernameAndPassword(username, password) > 0;
     }
-    
-    
 }

@@ -13,4 +13,5 @@ public interface RegisterMapper {
 			VAlUES (#{username}, #{password})
 			""")
 	void insertUser(Login login);
+	
 }

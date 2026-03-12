@@ -60,4 +60,3 @@ public interface TaskMapper {
 			""")
 	void update(Task task);
 }
-

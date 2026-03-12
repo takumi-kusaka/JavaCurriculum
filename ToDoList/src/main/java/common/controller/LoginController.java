@@ -37,6 +37,5 @@ public class LoginController {
             model.addAttribute("errorMessage", "ユーザー名またはパスワードが違います");
             return "login";
         }
-        
     }
 }

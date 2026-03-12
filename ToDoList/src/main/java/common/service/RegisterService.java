@@ -17,5 +17,4 @@ public class RegisterService {
 	public void register(Login login) {
 		registerMapper.insertUser(login);
 	}
-	
 }
