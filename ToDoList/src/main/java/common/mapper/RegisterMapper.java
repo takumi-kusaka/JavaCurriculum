@@ -14,4 +14,5 @@ public interface RegisterMapper {
 			""")
 	void insertUser(Login login);
 
+	
 }

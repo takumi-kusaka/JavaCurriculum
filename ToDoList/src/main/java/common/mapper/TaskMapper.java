@@ -34,6 +34,7 @@ public interface TaskMapper {
 	        """)
 	    List<Task> findByUsername(@Param("username") String username);
 	
+	
 
 	@Insert("""
 			INSERT INTO tasks

@@ -25,6 +25,5 @@ public class RegisterController {
     public String doRegister(Login login) {
     	registerService.register(login);
     	return "redirect:/login";
-    	
     }
 }

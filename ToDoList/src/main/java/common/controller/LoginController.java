@@ -28,7 +28,6 @@ public class LoginController {
                           @RequestParam("password") String password,
                           Model model,
                           HttpSession session) {
-
         boolean result = loginService.loginCheck(username, password);
 
         if (result) {
