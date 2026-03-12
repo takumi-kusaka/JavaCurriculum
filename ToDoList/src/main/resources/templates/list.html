@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>タスク一覧</title>
+
+    <style>
+        body{
+            margin:0;
+            padding:40px 20px;
+            background:#f5f5f5;
+            font-family:sans-serif;
+            text-align:center;
+        }
+
+        h1{
+            margin-top:40px;
+            margin-bottom:30px;
+            font-size:48px;
+        }
+
+        .empty-area{
+            width:1000px;
+            margin:0 auto;
+        }
+
+        .empty-box{
+            background:#d9f3fb;
+            padding:14px 20px;
+            border-radius:4px;
+            font-size:14px;
+            color:#333;
+            text-align:center;
+        }
+
+        .bottom-right{
+            width:1000px;
+            margin:12px auto 0;
+            text-align:right;
+        }
+
+        .new-btn{
+            padding:10px 18px;
+            background:#34a853;
+            color:white;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:14px;
+        }
+
+        .table-wrap{
+            width:fit-content;
+            margin:0 auto;
+        }
+
+        table{
+            border-collapse:collapse;
+            background:white;
+            margin:0 auto;
+            min-width:1100px;
+            box-shadow:0 0 8px rgba(0,0,0,0.08);
+        }
+
+        th{
+            background:#1f2733;
+            color:white;
+            padding:12px 10px;
+            font-size:14px;
+            border:1px solid #ddd;
+        }
+
+        td{
+            padding:12px 10px;
+            font-size:13px;
+            border:1px solid #ddd;
+            background:#fafafa;
+        }
+
+        tr:nth-child(even) td{
+            background:#f0f0f0;
+        }
+
+        .action-area{
+            display:flex;
+            gap:8px;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .edit-btn{
+            display:inline-block;
+            padding:6px 12px;
+            background:#4285f4;
+            color:white;
+            text-decoration:none;
+            border-radius:4px;
+            font-size:12px;
+            border:none;
+        }
+
+        .delete-btn{
+            padding:6px 12px;
+            background:#ff5b6e;
+            color:white;
+            border:none;
+            border-radius:4px;
+            font-size:12px;
+            cursor:pointer;
+        }
+
+        .bottom-area{
+            width:1100px;
+            margin:20px auto 0;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        }
+
+        .pagination-wrap{
+            flex:1;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            gap:6px;
+        }
+
+        .page-btn{
+            min-width:34px;
+            height:34px;
+            border:1px solid #d9d9d9;
+            background:white;
+            color:#666;
+            border-radius:4px;
+            cursor:pointer;
+        }
+
+        .page-btn.active{
+            background:#4285f4;
+            color:white;
+            border:none;
+        }
+
+        .page-btn:disabled{
+            background:#efefef;
+            color:#bbb;
+            cursor:default;
+        }
+
+        .new-form{
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+
+<h1>タスク一覧</h1>
+
+<div th:if="${#lists.isEmpty(tasks)}">
+    <div class="empty-area">
+        <div class="empty-box">
+            📢 現在タスクは登録されていません。「新規作成」から追加してください。
+        </div>
+    </div>
+
+    <div class="bottom-right">
+        <form action="/new" method="get">
+            <button class="new-btn" type="submit">＋新規作成</button>
+        </form>
+    </div>
+</div>
+
+<div class="table-wrap" th:if="${!#lists.isEmpty(tasks)}">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>タイトル</th>
+            <th>内容</th>
+            <th>登録者</th>
+            <th>開始日</th>
+            <th>終了日</th>
+            <th>作成日時</th>
+            <th>更新日時</th>
+            <th>操作</th>
+        </tr>
+
+        <tr th:each="task : ${tasks}">
+            <td th:text="${task.id}"></td>
+            <td th:text="${task.title}"></td>
+            <td th:text="${task.content}"></td>
+            <td th:text="${task.username}"></td>
+            <td th:text="${task.startDate}"></td>
+            <td th:text="${task.endDate}"></td>
+            <td th:text="${task.createdAt}"></td>
+            <td th:text="${task.updatedAt}"></td>
+
+            <td>
+                <div class="action-area">
+                    <a class="edit-btn" th:href="@{/edit(id=${task.id})}">編集</a>
+
+                    <form th:action="@{/delete}" method="post" style="display:inline;">
+                        <input type="hidden" name="id" th:value="${task.id}">
+                        <button class="delete-btn" type="submit">削除</button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+    <div class="bottom-area">
+        <div class="pagination-wrap">
+            <button id="prevBtn" class="page-btn" onclick="prev()">« 前</button>
+            <div id="pagination"></div>
+            <button id="nextBtn" class="page-btn" onclick="next()">次 »</button>
+        </div>
+
+        <form class="new-form" action="/new" method="get">
+            <button class="new-btn" type="submit">＋新規作成</button>
+        </form>
+    </div>
+</div>
+
+<script>
+let page = 0;
+let rowsPerPage = 10;
+let rows = document.querySelectorAll("table tr:nth-child(n+2)");
+let totalPages = Math.ceil(rows.length / rowsPerPage);
+
+function show(){
+    rows.forEach((row,index)=>{
+        if(index >= page * rowsPerPage && index < (page + 1) * rowsPerPage){
+            row.style.display = "";
+        }else{
+            row.style.display = "none";
+        }
+    });
+
+    updatePaginationButtons();
+}
+
+function createPagination(){
+    if(rows.length === 0){
+        return;
+    }
+
+    let pagination = document.getElementById("pagination");
+    pagination.innerHTML = "";
+
+    for(let i = 0; i < totalPages; i++){
+        let button = document.createElement("button");
+        button.textContent = i + 1;
+        button.className = "page-btn";
+
+        if(i === page){
+            button.classList.add("active");
+        }
+
+        button.onclick = function(){
+            page = i;
+            show();
+            createPagination();
+        };
+
+        pagination.appendChild(button);
+    }
+}
+
+function updatePaginationButtons(){
+    let prevBtn = document.getElementById("prevBtn");
+    let nextBtn = document.getElementById("nextBtn");
+
+    if(prevBtn){
+        prevBtn.disabled = (page === 0);
+    }
+
+    if(nextBtn){
+        nextBtn.disabled = (page === totalPages - 1 || totalPages === 0);
+    }
+}
+
+function next(){
+    if(page < totalPages - 1){
+        page++;
+        show();
+        createPagination();
+    }
+}
+
+function prev(){
+    if(page > 0){
+        page--;
+        show();
+        createPagination();
+    }
+}
+
+show();
+createPagination();
+</script>
+
+</body>
+</html>

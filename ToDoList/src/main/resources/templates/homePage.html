@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>TODOアプリ TOP</title>
+
+	<style>
+		body{
+    text-align:center;
+    margin-top:200px;
+    font-family:sans-serif;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+button{
+    width:120px;
+    height:40px;
+    border:none;
+    border-radius:5px;
+    color:white;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.register{
+    background-color:#34a853;
+}
+
+.login{
+    background-color:#4285f4;
+}
+	</style>
+
+</head>
+
+<body>
+
+	<h1>TODOアプリ TOP</h1>
+
+	<div class="buttons">
+
+	<form action="/register" method="get">
+		<button class="register" type="submit">ユーザー登録</button>
+	</form>
+
+	<form action="/login" method="get">
+		<button class="login" type="submit">ログイン</button>
+	</form>
+
+</div>
+
+</body>
+
+</html>

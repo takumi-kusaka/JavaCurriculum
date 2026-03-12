@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>タスク編集</title>
+
+<style>
+    body{
+        margin:0;
+        background:#f5f5f5;
+        font-family:sans-serif;
+    }
+
+    .container{
+        width:1000px;
+        margin:60px auto;
+    }
+
+    h1{
+        font-size:48px;
+        margin-bottom:30px;
+    }
+
+    .form-group{
+        margin-bottom:20px;
+    }
+
+    label{
+        display:block;
+        font-size:14px;
+        font-weight:bold;
+        margin-bottom:8px;
+        color:#333;
+    }
+
+    input, textarea{
+        width:100%;
+        padding:12px;
+        font-size:14px;
+        border:1px solid #ddd;
+        border-radius:4px;
+        box-sizing:border-box;
+        background:white;
+    }
+
+    textarea{
+        height:70px;
+        resize:vertical;
+    }
+
+    .button-area{
+        display:flex;
+        gap:10px;
+        margin-top:10px;
+    }
+
+    .update-btn{
+        background:#4285f4;
+        color:white;
+        border:none;
+        border-radius:4px;
+        padding:10px 18px;
+        font-size:14px;
+        cursor:pointer;
+    }
+
+    .cancel-btn{
+        display:inline-block;
+        background:#6c757d;
+        color:white;
+        text-decoration:none;
+        border-radius:4px;
+        padding:10px 18px;
+        font-size:14px;
+    }
+</style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>タスク編集</h1>
+
+    <form th:action="@{/update}" method="post">
+
+        <input type="hidden" name="id" th:value="${task.id}">
+
+        <div class="form-group">
+            <label>タイトル</label>
+            <input type="text" name="title" th:value="${task.title}">
+        </div>
+
+        <div class="form-group">
+            <label>内容</label>
+            <textarea name="content" th:text="${task.content}"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>登録者</label>
+            <input type="text" name="username" th:value="${task.username}">
+        </div>
+
+        <div class="form-group">
+            <label>開始日</label>
+            <input type="date" name="startDate" th:value="${task.startDate}">
+        </div>
+
+        <div class="form-group">
+            <label>終了日</label>
+            <input type="date" name="endDate" th:value="${task.endDate}">
+        </div>
+
+        <div class="button-area">
+            <button class="update-btn" type="submit">更新</button>
+            <a class="cancel-btn" href="/list">キャンセル</a>
+        </div>
+
+    </form>
+</div>
+
+</body>
+</html>
